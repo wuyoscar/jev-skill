@@ -91,7 +91,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Browser | [WebMCP / WindTunnel](https://github.com/nekuda-ai/WindTunnel) | 网站工具选择与浏览器评测 | 报告 |
 | Browser | [Stagehand + Jev](https://x.com/kylejeong/status/2101046888468553855) | 接进 act / observe / extract | 作者原帖 |
 | Browser | [Jev Browser Use](https://github.com/wy-coliney/jev-browser-use) | Codex 输入并验证，Jev 选控件 | README |
-| 调研 | [Jev Social](https://github.com/socai-io/jev-social) | Jev 选择受限的社交浏览器动作，SocAI 在用户已登录的 Chrome 中执行并保留来源链接证据 | README |
+| 调研 | [Jev Social](https://github.com/socai-io/jev-social) | Jev 选择受限的社交浏览器动作，socai CLI 在用户已登录的 Chrome 中执行并保留来源链接证据 | README |
 | Desktop | [Jev Desktop](https://github.com/yikangy873-gif/jev-desktop) | 已有 Codex CUA 环境里的受限控件选择 | README |
 | Agent | [Jev Codex Router](https://github.com/0xNatoshi/jev-codex-router) | 逐轮选模型档位，先看影子模式 | README |
 | Context | [winnow](https://github.com/GhalebDweikat/winnow) | 可恢复的工具结果裁剪 | README |
