@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev chooses, classifies and scores. Your agent supplies evidence and takes action.
-Browse **60 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
+Browse **61 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
 
 <a id="contents"></a>
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
@@ -94,6 +94,7 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Research | [Jev Social](https://github.com/socai-io/jev-social) | Jev chooses bounded social-browser actions; SocAI executes in the user's logged-in Chrome and keeps source-linked evidence | README |
 | Desktop | [Jev Desktop](https://github.com/yikangy873-gif/jev-desktop) | Bounded controls in an existing Codex CUA runtime | README |
 | Agent | [Jev Codex Router](https://github.com/0xNatoshi/jev-codex-router) | Recommend a model tier per turn; inspect shadow mode | README |
+| Agent | [Codex Jev Router](https://github.com/suenot/codex-jev-router) | Jev selects Codex subagent model and reasoning tiers; inspect the local confidence gates and fallback | README |
 | Context | [winnow](https://github.com/GhalebDweikat/winnow) | Recoverable tool-output filtering and recall stubs | README |
 | Review | [Jev Review](https://github.com/devagrawal09/jev-review) | Staged code-review judgments and dashboard | README |
 | Search | [Blink (ellipsis-dev)](https://github.com/ellipsis-dev/blink) | Explore repository file/folder names, not full review | README |
