@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev chooses, classifies and scores. Your agent supplies evidence and takes action.
-Browse **61 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
+Browse **62 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
 
 <a id="contents"></a>
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
@@ -156,6 +156,7 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Directory | [Awesome Jev (kraayenjon)](https://github.com/kraayenjon/awesome-jev) | Companion list of projects and implementation patterns | README |
 | Directory | [Awesome Jev (Anil-matcha)](https://github.com/Anil-matcha/awesome-jev-by-typesafe) | More projects and community discovery | Directory |
 | Directory | [LINUX DO / QianCheng](https://linux.do/t/topic/2919004) | 39-use-case roundup with original-post links | Roundup |
+| Directory | [laya.tools](https://laya.tools) | Projects built on Laya, the open Jev alternative, by platform and use case, plus a Laya vs Jev comparison | Directory |
 | Resource | [Awesome Jev (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery) | Browse open models, projects and independent evaluations. | Directory |
 | Resource | [prompt2jev](https://github.com/sumleo/prompt2jev) | Turn a prompt into typed questions and calling code. | README |
 
