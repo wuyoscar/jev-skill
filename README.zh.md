@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **61 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **62 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -94,6 +94,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | 调研 | [Jev Social](https://github.com/socai-io/jev-social) | Jev 选择受限的社交浏览器动作，SocAI 在用户已登录的 Chrome 中执行并保留来源链接证据 | README |
 | Desktop | [Jev Desktop](https://github.com/yikangy873-gif/jev-desktop) | 已有 Codex CUA 环境里的受限控件选择 | README |
 | Agent | [Jev Codex Router](https://github.com/0xNatoshi/jev-codex-router) | 逐轮选模型档位，先看影子模式 | README |
+| Agent | [Codex Jev Router (suenot)](https://github.com/suenot/codex-jev-router) | 根据任务摘要选择 Codex 子代理模型与推理档位；本地置信度门槛未通过时回退到 Sol | README |
 | Context | [winnow](https://github.com/GhalebDweikat/winnow) | 可恢复的工具结果裁剪 | README |
 | Review | [Jev Review](https://github.com/devagrawal09/jev-review) | 分阶段代码审查与面板 | README |
 | Search | [Blink (ellipsis-dev)](https://github.com/ellipsis-dev/blink) | 按文件和目录名找代码，不等于完整审查 | README |
