@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **61 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **62 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -156,6 +156,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Directory | [Awesome Jev (kraayenjon)](https://github.com/kraayenjon/awesome-jev) | 项目与实现方式的配套合集 | README |
 | Directory | [Awesome Jev (Anil-matcha)](https://github.com/Anil-matcha/awesome-jev-by-typesafe) | 更多项目与社区线索 | 目录线索 |
 | Directory | [LINUX DO / QianCheng](https://linux.do/t/topic/2919004) | 带原帖链接的 39 项用途汇总 | 汇总原文 |
+| Directory | [laya.tools](https://laya.tools) | 基于开源 Jev 替代模型 Laya 的项目目录，按平台和用途浏览，附 Laya 与 Jev 对比 | 目录线索 |
 | 工具与资源 | [Awesome Jev (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery) | 浏览开放模型、项目和独立评测。 | Directory |
 | 工具与资源 | [prompt2jev](https://github.com/sumleo/prompt2jev) | 把 Prompt 转成结构化问题和调用代码。 | README |
 
