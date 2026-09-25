@@ -136,7 +136,8 @@ class SkillCatalogTests(unittest.TestCase):
         for filename in ("README.md", "README.zh.md"):
             text = (ROOT / filename).read_text()
             section = text.split('<a id="projects"></a>', 1)[1].split('<a id="skills"></a>', 1)[0]
-            self.assertEqual(len(re.findall(r"^\| [^|]+ \| \[", section, re.M)), 61)
+            self.assertEqual(len(re.findall(r"^\| [^|]+ \| \[", section, re.M)), 62)
+            self.assertIn("[Codex Jev Router (suenot)](https://github.com/suenot/codex-jev-router)", section)
             self.assertEqual(len(re.findall(r"^#### \d+\.", text, re.M)), 108)
 
     def test_overview_links_to_the_three_sections(self):
