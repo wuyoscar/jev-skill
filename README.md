@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev chooses, classifies and scores. Your agent supplies evidence and takes action.
-Browse **61 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
+Browse **62 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
 
 <a id="contents"></a>
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
@@ -149,6 +149,7 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Report | [jev-evaluation](https://github.com/willkelly/jev-evaluation) | Adversarial cases, calibration and batching experiments | Report |
 | Report | [PrimeLine comparison](https://primeline.cc/blog/typesafe-jev-pre-registered-test) | Task-dependent results with important labeling caveats | Report |
 | Report | [LangChain Jev-as-a-Judge](https://www.langchain.com/blog/jev-agent-evals-langsmith) | Judge consistency, quality, latency and cost | Report |
+| Report | [Jev in the Wild: A Data-Driven Analysis of the Jev Model's Functionality, Applications and Ecosystem](https://arxiv.org/abs/2609.30216) | First data-driven Jev application ecosystem survey and analysis: 2,170 public GitHub projects, early growth, application domains, and decision-use patterns. | Paper |
 | Methods | [HarmBench](https://github.com/centerforaisafety/HarmBench) | Separate test generation, target completion and scoring | Method |
 | Methods | [PAIR](https://github.com/patrickrchao/JailbreakingLLMs) | Authorized iterative red-team methodology, not a Jev app | Method |
 | Methods | [AgentDojo](https://github.com/ethz-spylab/agentdojo) | Agent injection evaluation with task outcomes | Method |

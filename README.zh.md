@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **61 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **62 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -149,6 +149,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Report | [jev-evaluation](https://github.com/willkelly/jev-evaluation) | 对抗样例、校准和批量判断实验 | 报告 |
 | Report | [PrimeLine comparison](https://primeline.cc/blog/typesafe-jev-pre-registered-test) | 任务依赖的结果，注意标签来源限制 | 报告 |
 | Report | [LangChain Jev-as-a-Judge](https://www.langchain.com/blog/jev-agent-evals-langsmith) | 比较判分一致性、质量、延迟和成本 | 报告 |
+| Report | [Jev in the Wild: A Data-Driven Analysis of the Jev Model's Functionality, Applications and Ecosystem](https://arxiv.org/abs/2609.30216) | 首个基于数据的 Jev 应用生态综述与分析：覆盖 2,170 个公开 GitHub 项目，记录早期增长、应用领域与决策用途分布。 | 论文 |
 | Methods | [HarmBench](https://github.com/centerforaisafety/HarmBench) | 分离样例生成、目标输出与评测 | 方法参考 |
 | Methods | [PAIR](https://github.com/patrickrchao/JailbreakingLLMs) | 授权迭代红队方法，不是 Jev 应用 | 方法参考 |
 | Methods | [AgentDojo](https://github.com/ethz-spylab/agentdojo) | 结合任务结果的 Agent 注入评测 | 方法参考 |
