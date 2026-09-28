@@ -18,10 +18,11 @@ to silently replace those choices. Verify offline; updating does not authorize A
 
 ## Setup: choose the service or simulation
 
-Check only the presence of `OPENROUTER_API_KEY` and `TYPESAFE_API_KEY`; never
-print credentials. Respect the user's already chosen mode. For a new setup,
-prefer the user's existing OpenRouter account; otherwise offer official TypeSafe.
-If OpenRouter is missing, explain that direct TypeSafe is also real Jev. Do not
+Check only the presence of `OPENROUTER_API_KEY`, `TYPESAFE_API_KEY` and
+`BOCHA_JEV_API_KEY`/`BOCHA_SEARCH_API_KEY`; never print credentials. Respect the
+user's already chosen mode. For a new setup, prefer the user's existing
+OpenRouter account; otherwise offer official TypeSafe or Bocha Jev. If
+OpenRouter is missing, explain that direct TypeSafe is also real Jev. Do not
 silently change destination, send data, create an account or switch the host model.
 
 If no route has been chosen, explain the available routes and ask:
@@ -48,9 +49,11 @@ Never present this as Jev, calibrated probability or equivalent speed/accuracy.
 Skip Jev CLI/API steps in B; use the approved model's existing interface and do
 not install a substitute or send data elsewhere without consent.
 
-In A, select the CLI destination explicitly: `--provider openrouter` or
-`--provider typesafe`. The latter uses `TYPESAFE_API_KEY` and maps the bundled
-OpenRouter model ID to `jev-1.13.0`. `--dry-run` only validates; it neither
+In A, select the CLI destination explicitly: `--provider openrouter`,
+`--provider typesafe` or `--provider bocha`. The TypeSafe route uses
+`TYPESAFE_API_KEY` and maps the bundled OpenRouter model ID to `jev-1.13.0`. The
+Bocha route uses `BOCHA_JEV_API_KEY`, with `BOCHA_SEARCH_API_KEY` as fallback,
+and maps the bundled IDs to `bocha-jev-v1`. `--dry-run` only validates; it neither
 classifies nor makes a network call. `jev-decide setup` reports presence only,
 not key validity, credits or permission. Continue below for the selected route, or use the
 [copyable simulation prompt](simulation.md).
@@ -61,6 +64,7 @@ not key validity, credits or permission. Continue below for the selected route, 
 |---|---|---|---|
 | OpenRouter | `OPENROUTER_API_KEY` | `--provider openrouter` | `https://openrouter.ai/api/alpha/decisions` / `typesafe/jev-1.13` |
 | Official TypeSafe | `TYPESAFE_API_KEY` | `--provider typesafe` | `https://api.typesafe.ai/v1/systemone` / `jev-1.13.0` |
+| Bocha Jev | `BOCHA_JEV_API_KEY` (or `BOCHA_SEARCH_API_KEY`) | `--provider bocha` | `https://jev.bocha.cn/v1/systemone` / `bocha-jev-v1` |
 | Current agent / approved DeepSeek | Existing host or selected model access | No Jev CLI call | [Simulation prompt](simulation.md); never invent an API receipt |
 
 If the user uses OpenRouter but has no key, point them to its key page. If they
@@ -94,6 +98,13 @@ export OPENROUTER_API_KEY="<your-OpenRouter-key>"
 jev-decide decide /path/to/request.json --provider openrouter --dry-run
 ```
 
+```bash
+# Alternative: Bocha Jev client key from https://jev.bocha.cn
+# A BOCHA_SEARCH_API_KEY that already grants access may be reused.
+export BOCHA_JEV_API_KEY="<your-Bocha-Jev-key>"
+jev-decide decide /path/to/request.json --provider bocha --dry-run
+```
+
 Setting `TYPESAFE_API_KEY` does not select the provider: keep `--provider typesafe`
 on native calls even when both keys exist. This CLI does **not** auto-load `.env`.
 An already running desktop agent may need a restart to inherit its environment.
@@ -114,4 +125,5 @@ sufficient context and batch independent questions in the same request; the
 host schedules bounded concurrency, not dependent steps in parallel.
 
 [TypeSafe contract](https://docs.typesafe.ai/api) · [TypeSafe models](https://docs.typesafe.ai/models) ·
-[OpenRouter contract](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request).
+[OpenRouter contract](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request) ·
+[Bocha Jev skill](https://jev.bocha.cn/install/skill.md).

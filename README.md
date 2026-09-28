@@ -408,7 +408,8 @@ jev-decide decide request.json > result.json
 ```
 
 Commands default to OpenRouter. For the official route, add `--provider typesafe`
-to both the dry run and the real call.
+to both the dry run and the real call. For Bocha Jev, add `--provider bocha` with
+`BOCHA_JEV_API_KEY` (or `BOCHA_SEARCH_API_KEY`) in the launch environment.
 
 Read `result.json`, not just the process exit code. Exit `0` means selected/scored,
 `2` means review, and `1` means error; selecting an action does not execute it.

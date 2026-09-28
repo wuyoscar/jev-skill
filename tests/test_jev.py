@@ -257,6 +257,100 @@ class TransportTests(unittest.TestCase):
             opener.return_value.open.assert_called_once()
 
 
+class BochaProviderTests(unittest.TestCase):
+    def test_unknown_provider_is_rejected(self):
+        with self.assertRaises(jev.JevError):
+            jev.request_decisions(request("noul"), provider="untrusted")
+
+    def test_bocha_uses_documented_endpoint_and_primary_key(self):
+        response = {"answers": {"q": {"type": "noul", "noul": 0.97}}}
+        with patch.dict(os.environ, {"BOCHA_JEV_API_KEY": "bocha-secret"}, clear=True), \
+                patch("jev.urllib.request.build_opener") as opener:
+            opener.return_value.open.return_value.__enter__.return_value.read.return_value = json.dumps(response).encode()
+            self.assertEqual(jev.request_decisions(request("noul"), provider="bocha"), response)
+            sent = opener.return_value.open.call_args.args[0]
+            self.assertEqual(sent.full_url, jev.BOCHA_URL)
+            self.assertEqual(sent.get_header("Authorization"), "Bearer bocha-secret")
+            opener.return_value.open.assert_called_once()
+
+    def test_bocha_falls_back_to_bocha_search_key(self):
+        with patch.dict(os.environ, {"BOCHA_SEARCH_API_KEY": "search-secret"}, clear=True), \
+                patch("jev.urllib.request.build_opener") as opener:
+            opener.return_value.open.return_value.__enter__.return_value.read.return_value = b'{"answers":{}}'
+            jev.request_decisions(request("noul"), provider="bocha")
+            sent = opener.return_value.open.call_args.args[0]
+            self.assertEqual(sent.full_url, jev.BOCHA_URL)
+            self.assertEqual(sent.get_header("Authorization"), "Bearer search-secret")
+            opener.return_value.open.assert_called_once()
+
+    def test_bocha_other_provider_keys_are_not_used(self):
+        with patch.dict(os.environ, {"OPENROUTER_API_KEY": "or-secret", "TYPESAFE_API_KEY": "ts-secret"}, clear=True), \
+                patch("jev.urllib.request.build_opener") as opener:
+            with self.assertRaisesRegex(jev.JevError, "BOCHA_JEV_API_KEY"):
+                jev.request_decisions(request("noul"), provider="bocha")
+            opener.assert_not_called()
+
+    def test_bocha_rejects_malformed_key_without_network(self):
+        with patch.dict(os.environ, {"BOCHA_JEV_API_KEY": "secret-key\nsecret-header"}, clear=True), \
+                patch("jev.urllib.request.build_opener") as opener:
+            with self.assertRaises(jev.JevError) as error:
+                jev.request_decisions(request("noul"), provider="bocha")
+            self.assertNotIn("secret", str(error.exception))
+            opener.assert_not_called()
+
+    def test_setup_report_lists_bocha_availability(self):
+        for env, expected in [({}, False), ({"BOCHA_SEARCH_API_KEY": "search-secret"}, True),
+                              ({"BOCHA_JEV_API_KEY": "bocha-secret"}, True)]:
+            with self.subTest(env=env), patch.dict(os.environ, env, clear=True):
+                report = jev.setup_report()
+            self.assertEqual(report["available"]["bocha"], expected)
+            self.assertFalse(report["available"]["openrouter"])
+            self.assertFalse(report["available"]["typesafe"])
+
+    def test_bocha_dry_run_maps_bundled_models_only(self):
+        payload = {"state": "fixture", "questions": {
+            "q": {"type": "noul", "instructions": "Judge this fixture."}}}
+        for model_id, expected in [(None, "bocha-jev-v1"), (jev.DEFAULT_MODEL, "bocha-jev-v1"),
+                                   (jev.TYPESAFE_MODEL, "bocha-jev-v1"), ("bocha-jev-latest", "bocha-jev-latest")]:
+            body = json.dumps(payload if model_id is None else {**payload, "model": model_id})
+            output = io.StringIO()
+            with self.subTest(model=model_id), patch.dict(os.environ, {}, clear=True), \
+                    patch("sys.stdin", io.StringIO(body)), patch("jev.request_decisions") as network, \
+                    contextlib.redirect_stdout(output):
+                self.assertEqual(jev.main(["decide", "-", "--provider", "bocha", "--dry-run"]), 0)
+                network.assert_not_called()
+            self.assertEqual(json.loads(output.getvalue())["model"], expected)
+        output = io.StringIO()
+        with patch.dict(os.environ, {}, clear=True), \
+                patch("sys.stdin", io.StringIO(json.dumps({**payload, "model": jev.DEFAULT_MODEL}))), \
+                patch("jev.request_decisions") as network, contextlib.redirect_stdout(output):
+            self.assertEqual(jev.main(["decide", "-", "--provider", "bocha", "--dry-run",
+                                       "--model", "jev-latest"]), 0)
+            network.assert_not_called()
+        self.assertEqual(json.loads(output.getvalue())["model"], "jev-latest")
+
+    def test_bocha_cli_full_mock_response_reports_transport(self):
+        payload = {"model": jev.DEFAULT_MODEL, "state": "我的订单被重复扣款，请退还多收的费用。", "questions": {
+            "refund": {"type": "noul", "instructions": "客户是否要求退款？"}}}
+        response = {"model": "bocha-jev-v1", "answers": {"refund": {"type": "noul", "noul": 0.99}},
+                    "usage": {"input_tokens": 12, "output_tokens": 0}, "metadata": {"inference_ms": 8}}
+        output = io.StringIO()
+        with patch.dict(os.environ, {"BOCHA_JEV_API_KEY": "bocha-secret"}, clear=True), \
+                patch("sys.stdin", io.StringIO(json.dumps(payload))), \
+                patch("jev.urllib.request.build_opener") as opener, contextlib.redirect_stdout(output):
+            opener.return_value.open.return_value.__enter__.return_value.read.return_value = json.dumps(response).encode()
+            self.assertEqual(jev.main(["decide", "-", "--provider", "bocha"]), 0)
+            sent = opener.return_value.open.call_args.args[0]
+            self.assertEqual(sent.full_url, jev.BOCHA_URL)
+            self.assertEqual(json.loads(sent.data)["model"], jev.BOCHA_MODEL)
+        result = json.loads(output.getvalue())
+        self.assertEqual(result["transport"], "bocha")
+        self.assertEqual(result["decisions"]["refund"],
+                         {"status": "selected", "value": True, "probability": 0.99})
+        self.assertEqual(result["response"], response)
+        self.assertNotIn("bocha-secret", output.getvalue())
+
+
 class CLITests(unittest.TestCase):
     def test_huge_integer_field_is_a_validation_error(self):
         with self.assertRaises(jev.JevError):

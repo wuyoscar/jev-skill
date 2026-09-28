@@ -150,6 +150,21 @@ restart it when needed; `setup` checks presence, not authentication or credits.
 [Setup mode](../skills/jev/references/setup.md#local-key-setup) ·
 [Common pitfalls](../skills/jev/references/pitfalls.md#native-key).
 
+### Bocha Jev key
+
+Obtain a client key at [jev.bocha.cn](https://jev.bocha.cn) and set
+`BOCHA_JEV_API_KEY` locally in the host's launch environment; an existing
+`BOCHA_SEARCH_API_KEY` that already grants access may be reused. Then select
+`--provider bocha`, which maps the bundled model IDs to `bocha-jev-v1`.
+
+```bash
+export BOCHA_JEV_API_KEY="<your-Bocha-Jev-key>"
+jev-decide setup
+jev-decide decide skills/jev-triage/assets/example.json --provider bocha --dry-run
+# Only after approving the data and paid call:
+jev-decide decide /path/to/edited-request.json --provider bocha > result.json
+```
+
 The general `jev` skill also works without installing the CLI:
 
 ```bash
@@ -160,13 +175,17 @@ python3 /actual/skill/path/scripts/jev.py decide request.json
 Resolve installed paths relative to the loaded skill, not the host project.
 Normal decisions send supplied state/questions to the selected provider and incur usage;
 dry runs do neither. Logs may contain supplied text: keep private data out of
-public benchmark artifacts. Use `--provider openrouter` (default) or
-`--provider typesafe` explicitly; the CLI never switches providers after an error.
-The official route uses `https://api.typesafe.ai/v1/systemone` and `TYPESAFE_API_KEY`.
+public benchmark artifacts. Use `--provider openrouter` (default),
+`--provider typesafe` or `--provider bocha` explicitly; the CLI never switches
+providers after an error. The official route uses
+`https://api.typesafe.ai/v1/systemone` and `TYPESAFE_API_KEY`; the Bocha route
+uses `https://jev.bocha.cn/v1/systemone` with `BOCHA_JEV_API_KEY`, or
+`BOCHA_SEARCH_API_KEY` when it already grants access.
 `jev-decide setup` only reports presence and choices; it does not test credentials.
 
-Default OpenRouter model: `typesafe/jev-1.13`; official: `jev-1.13.0`.
-Explicit TypeSafe selection maps the bundled OpenRouter ID to the official ID.
+Default OpenRouter model: `typesafe/jev-1.13`; official: `jev-1.13.0`; Bocha: `bocha-jev-v1`.
+Explicit TypeSafe or Bocha selection maps the bundled OpenRouter and TypeSafe IDs
+to that route's model.
 The OpenRouter API is alpha; test upgrades deliberately.
 `--model` overrides request `model`, then `JEV_MODEL`, then the default.
 

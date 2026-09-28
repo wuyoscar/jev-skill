@@ -392,6 +392,8 @@ jev-decide decide request.json --dry-run
 ```
 
 命令默认使用 OpenRouter；若选官方入口，给检查与调用都加上 `--provider typesafe`。
+若选 Bocha Jev，两者都加 `--provider bocha`，并在启动环境里配置 `BOCHA_JEV_API_KEY`
+（或已有权限的 `BOCHA_SEARCH_API_KEY`）。
 检查通过、确认可以把这些数据发往所选服务商后，再真实调用并保存结果：
 
 ```bash

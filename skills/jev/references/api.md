@@ -1,4 +1,4 @@
-# Jev through OpenRouter or official TypeSafe
+# Jev through OpenRouter, official TypeSafe or Bocha Jev
 
 Provider contracts checked against public documentation on **2026-09-21**; direct TypeSafe transport is mock-tested, not live-tested here. The Decisions endpoint is **alpha**; pin a model and recheck this contract before upgrading.
 
@@ -27,6 +27,22 @@ automatic service switching, retry or simulation is provided.
 `jev-decide setup` checks presence only and explains A/B choices. See the
 [setup skill](https://github.com/wuyoscar/jev-skill/blob/main/skills/jev/references/setup.md)
 and [official API](https://docs.typesafe.ai/api), [model IDs](https://docs.typesafe.ai/models).
+
+## Bocha Jev route
+
+Select it deliberately with `--provider bocha`; use `BOCHA_JEV_API_KEY`, falling
+back to `BOCHA_SEARCH_API_KEY` when that key already grants access. The endpoint
+is `POST https://jev.bocha.cn/v1/systemone`, with Bearer auth and the same
+state/questions shape. Its model is `bocha-jev-v1` (`bocha-jev-latest` and
+`jev-latest` are aliases). Selecting Bocha maps the bundled `typesafe/jev-1.13`
+and `jev-1.13.0` IDs to `bocha-jev-v1`; an explicit `--model` override is not
+rewritten. Successful replies carry top-level `model`, `answers`, `usage` and
+`metadata`; Noul returns a probability of true, Score a zero-based weighted
+index with a `legend`, and Choice a highest-probability candidate. Request and
+question validation, response validation and review policy are shared. Each
+complete question, including all its candidates, is limited to 32768 tokens.
+Keys are bound to fixed provider endpoints; no arbitrary base URL, automatic
+service switching, retry or simulation is provided.
 
 ## Native request
 

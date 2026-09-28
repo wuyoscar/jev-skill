@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Typed Jev decisions through OpenRouter or TypeSafe. Python standard library only."""
+"""Typed Jev decisions through OpenRouter, TypeSafe or Bocha Jev. Python standard library only."""
 
 import argparse
 import http.client
@@ -18,6 +18,8 @@ DEFAULT_MODEL = "typesafe/jev-1.13"
 DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions"
 TYPESAFE_URL = "https://api.typesafe.ai/v1/systemone"
 TYPESAFE_MODEL = "jev-1.13.0"
+BOCHA_URL = "https://jev.bocha.cn/v1/systemone"
+BOCHA_MODEL = "bocha-jev-v1"
 REVIEW_LABELS = {"other", "unknown", "abstain", "review", "ask_user", "wait",
                  "none", "defer", "insufficient_evidence"}
 
@@ -128,17 +130,23 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 def http_json(url, payload, timeout=30):
     """No retries or redirects; never put API keys or provider error bodies in logs."""
     endpoints = {
-        DECISIONS_URL: ("OPENROUTER_API_KEY", "OpenRouter"),
-        "https://openrouter.ai/api/v1/chat/completions": ("OPENROUTER_API_KEY", "OpenRouter"),
-        TYPESAFE_URL: ("TYPESAFE_API_KEY", "TypeSafe"),
+        DECISIONS_URL: (("OPENROUTER_API_KEY",), "OpenRouter"),
+        "https://openrouter.ai/api/v1/chat/completions": (("OPENROUTER_API_KEY",), "OpenRouter"),
+        TYPESAFE_URL: (("TYPESAFE_API_KEY",), "TypeSafe"),
+        BOCHA_URL: (("BOCHA_JEV_API_KEY", "BOCHA_SEARCH_API_KEY"), "Bocha Jev"),
     }
     if url not in endpoints:
-        raise JevError("Only the documented OpenRouter and TypeSafe endpoints are supported")
-    key_name, provider_name = endpoints[url]
+        raise JevError("Only the documented OpenRouter, TypeSafe and Bocha Jev endpoints are supported")
+    key_names, provider_name = endpoints[url]
     number(timeout, 0.1, 300, "timeout")
-    key = os.environ.get(key_name, "").strip()
+    key, key_name = "", key_names[0]
+    for name in key_names:
+        candidate = os.environ.get(name, "").strip()
+        if candidate:
+            key, key_name = candidate, name
+            break
     if not key:
-        raise JevError(f"Set {key_name} in the calling process environment; run setup for choices")
+        raise JevError(f"Set {' or '.join(key_names)} in the calling process environment; run setup for choices")
     if any(ord(character) < 33 or ord(character) > 126 for character in key):
         raise JevError(f"{key_name} contains invalid whitespace or non-ASCII characters")
     request = urllib.request.Request(
@@ -177,16 +185,19 @@ def http_json(url, payload, timeout=30):
 
 
 def request_decisions(payload, timeout=30, provider="openrouter"):
-    if provider not in {"openrouter", "typesafe"}:
-        raise JevError("provider must be openrouter or typesafe")
-    url = DECISIONS_URL if provider == "openrouter" else TYPESAFE_URL
-    return http_json(url, validate_request(payload), timeout)
+    urls = {"openrouter": DECISIONS_URL, "typesafe": TYPESAFE_URL, "bocha": BOCHA_URL}
+    if provider not in urls:
+        raise JevError("provider must be openrouter, typesafe, or bocha")
+    return http_json(urls[provider], validate_request(payload), timeout)
 
 
 def setup_report():
     """Inspect presence only. Do not test credentials, write config or choose a mode."""
-    available = {name: bool(os.environ.get(key, "").strip()) for name, key in
-                 [("openrouter", "OPENROUTER_API_KEY"), ("typesafe", "TYPESAFE_API_KEY")]}
+    environment_keys = {"openrouter": ("OPENROUTER_API_KEY",),
+                        "typesafe": ("TYPESAFE_API_KEY",),
+                        "bocha": ("BOCHA_JEV_API_KEY", "BOCHA_SEARCH_API_KEY")}
+    available = {name: any(os.environ.get(key, "").strip() for key in key_names)
+                 for name, key_names in environment_keys.items()}
     return {
         "available": available,
         "recommended_provider": next((name for name, present in available.items() if present), None),
@@ -196,7 +207,8 @@ def setup_report():
             "B": "After consent, use the current agent or an explicitly selected available model such as DeepSeek to simulate; no Jev probabilities.",
         },
         "key_pages": {"openrouter": "https://openrouter.ai/settings/keys",
-                      "typesafe": "https://console.typesafe.ai"},
+                      "typesafe": "https://console.typesafe.ai",
+                      "bocha": "https://jev.bocha.cn"},
         "note": "Presence is not authentication or credit validation. No network call or configuration change was made.",
     }
 
@@ -278,7 +290,7 @@ def parser():
     text.add_argument("--text-file", help="UTF-8 file, or - for stdin")
     classify.add_argument("--criteria", required=True, help="JSON file mapping labels to descriptions")
     for command in [decide, classify]:
-        command.add_argument("--provider", choices=["openrouter", "typesafe"], default="openrouter",
+        command.add_argument("--provider", choices=["openrouter", "typesafe", "bocha"], default="openrouter",
                              help="Explicit destination; default openrouter. Never falls back automatically")
         command.add_argument("--model", help=f"Default: request model, JEV_MODEL, or {DEFAULT_MODEL}")
         command.add_argument("--min-probability", type=float, default=0.8,
@@ -311,12 +323,15 @@ def main(argv=None):
                              "criteria": read_json(args.criteria)}}}
         if not isinstance(payload, dict):
             raise JevError("Request must be a JSON object")
-        default_model = DEFAULT_MODEL if args.provider == "openrouter" else TYPESAFE_MODEL
+        default_model = {"openrouter": DEFAULT_MODEL, "typesafe": TYPESAFE_MODEL,
+                         "bocha": BOCHA_MODEL}[args.provider]
         payload["model"] = args.model or payload.get("model") or os.environ.get("JEV_MODEL") or default_model
         # Bundled examples carry the OpenRouter model ID; explicit provider selection
         # maps that one known ID. Custom overrides are never rewritten.
         if args.provider == "typesafe" and not args.model and payload["model"] == DEFAULT_MODEL:
             payload["model"] = TYPESAFE_MODEL
+        if args.provider == "bocha" and not args.model and payload["model"] in (DEFAULT_MODEL, TYPESAFE_MODEL):
+            payload["model"] = BOCHA_MODEL
         validate_request(payload)
         number(args.min_probability, 0.5, 1, "min_probability")
         number(args.min_margin, 0, 1, "min_margin")

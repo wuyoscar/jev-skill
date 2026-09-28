@@ -43,7 +43,8 @@ fixed call/token quota; existing user permissions and budgets still apply.
 ## Use safely
 
 Choose the service once and keep that choice. If unset, ask **A: real Jev** via
-OpenRouter (`OPENROUTER_API_KEY`) or TypeSafe (`TYPESAFE_API_KEY`), or **B: simulation**
+OpenRouter (`OPENROUTER_API_KEY`), TypeSafe (`TYPESAFE_API_KEY`) or Bocha Jev
+(`BOCHA_JEV_API_KEY`, or `BOCHA_SEARCH_API_KEY`), or **B: simulation**
 with this agent or an explicitly chosen available model such as DeepSeek. Wait for
 consent; errors do not authorize switching. Check key presence only, never values.
 Real calls send evidence and cost money; get approval before sending private data.
@@ -54,8 +55,8 @@ the actual model when available, set `jev_called: false`, `probability: null` an
 null/review when evidence is missing. Do not invent Jev output or probabilities.
 Choice uses supplied labels, Noul uses booleans, Score uses integer rubric indices.
 
-For A, use the existing `jev-decide` CLI with the chosen `--provider openrouter`
-or `--provider typesafe`. If absent, explain the dependency; do not silently install.
+For A, use the existing `jev-decide` CLI with the chosen `--provider openrouter`,
+`--provider typesafe` or `--provider bocha`. If absent, explain the dependency; do not silently install.
 `--dry-run` is offline validation, not a judgment. Exit 0 means selected/scored,
 2 means review, 1 means error. Read each value: false Noul remains false. Selection
 is not permission, and confidence is not accuracy. Keep unknown/review paths.
