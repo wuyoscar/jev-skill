@@ -32,7 +32,6 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 <!-- contributors:start -->
 <a href="https://github.com/wuyoscar" title="wuyoscar"><img src="https://avatars.githubusercontent.com/u/72287536?v=4&s=96" width="48" height="48" alt="wuyoscar" /></a>
 <a href="https://github.com/claude" title="claude"><img src="https://avatars.githubusercontent.com/u/81847?v=4&s=96" width="48" height="48" alt="claude" /></a>
-<a href="https://github.com/dajiaohuang" title="dajiaohuang"><img src="https://avatars.githubusercontent.com/u/108231307?v=4&s=96" width="48" height="48" alt="dajiaohuang" /></a>
 <a href="https://github.com/feder-cr" title="feder-cr"><img src="https://avatars.githubusercontent.com/u/85809106?v=4&s=96" width="48" height="48" alt="feder-cr" /></a>
 <a href="https://github.com/Finderchangchang" title="Finderchangchang"><img src="https://avatars.githubusercontent.com/u/7477876?v=4&s=96" width="48" height="48" alt="Finderchangchang" /></a>
 <a href="https://github.com/Garfielk" title="Garfielk"><img src="https://avatars.githubusercontent.com/u/10264863?v=4&s=96" width="48" height="48" alt="Garfielk" /></a>
