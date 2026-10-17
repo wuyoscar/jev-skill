@@ -41,6 +41,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 <a href="https://github.com/kylemclaren" title="kylemclaren"><img src="https://avatars.githubusercontent.com/u/3727384?v=4&s=96" width="48" height="48" alt="kylemclaren" /></a>
 <a href="https://github.com/linggm3" title="linggm3"><img src="https://avatars.githubusercontent.com/u/109196306?v=4&s=96" width="48" height="48" alt="linggm3" /></a>
 <a href="https://github.com/Nedomas" title="Nedomas"><img src="https://avatars.githubusercontent.com/u/1877286?v=4&s=96" width="48" height="48" alt="Nedomas" /></a>
+<a href="https://github.com/sunyasheng" title="sunyasheng"><img src="https://avatars.githubusercontent.com/u/22748186?v=4&s=96" width="48" height="48" alt="sunyasheng" /></a>
 <a href="https://github.com/lunar-me" title="lunar-me"><img src="https://avatars.githubusercontent.com/u/275556969?v=4&s=96" width="48" height="48" alt="lunar-me" /></a>
 <a href="https://github.com/Negmus" title="Negmus"><img src="https://avatars.githubusercontent.com/u/19214491?v=4&s=96" width="48" height="48" alt="Negmus" /></a>
 <!-- contributors:end -->
