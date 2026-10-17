@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev chooses, classifies and scores. Your agent supplies evidence and takes action.
-Browse **66 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
+Browse **67 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
 
 <a id="contents"></a>
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
@@ -128,6 +128,7 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Search | [jevsearch](https://github.com/kylemclaren/jevsearch) | shadcn ⌘K site search: keyword hits first, then one Jev call re-ranks the top 20 | README |
 | Search | [JevPDF](https://github.com/kylemclaren/jevpdf) | Ask a PDF in your own words; one Noul per line highlights the matching lines | README |
 | Research | [1kpapers](https://www.1kpapers.com/) | Paper explorer: generation for summaries, Jev for topics | Directory |
+| Research | [JevGPT](https://github.com/sunyasheng/JevGPT) | Research agent from the paper [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272): GPT-5.5 plans the research; in BrowseComp-Plus QA, Jev uses Choice to locate answer lines and Noul to check whether each document region addresses the request, in parallel across many documents; code returns the original passages to GPT. Includes reproduction code for BrowseComp-Plus and NeuCLIRBench | Paper |
 | Inbox | [500 / 1,500-email demos](https://madewithjev.com/builds/inbox-triage-1500-emails) | Batch inbox labels; throughput does not prove accuracy | Directory |
 | Messaging | [Jev Chat Assistant](https://github.com/jev-chat/jev-chat-jarvis) | Android overlay: Jev judges intent, danger and next action for the visible QQ, X or Lark chat and ranks three drafted replies; the app fills the pick but never sends | README |
 | Content | [724-ad teardown](https://x.com/TheMattBerman/status/2100654891756589230) | Multiple dimensions per ad, then aggregate a comparison | Author post |

@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **66 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **67 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -128,6 +128,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Search | [jevsearch](https://github.com/kylemclaren/jevsearch) | shadcn ⌘K 站内搜索：先出关键词结果，再用一次 Jev 调用重排前 20 条 | README |
 | Search | [JevPDF](https://github.com/kylemclaren/jevpdf) | 用自己的话问 PDF，每行一个 Noul，高亮匹配的行 | README |
 | Research | [1kpapers](https://www.1kpapers.com/) | 论文浏览：生成模型写摘要，Jev 选主题 | 目录线索 |
+| Research | [JevGPT](https://github.com/sunyasheng/JevGPT) | 论文《[JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272)》的研究 Agent：GPT-5.5 负责规划研究、整合结论；在 BrowseComp-Plus 问答中，Jev 用 Choice 定位答案所在行、用 Noul 判断每个文档区域是否涉及所需信息，并行处理大量文档；代码把原文段落交回 GPT。附 BrowseComp-Plus 与 NeuCLIRBench 复现代码 | 论文 |
 | Inbox | [500 / 1,500-email demos](https://madewithjev.com/builds/inbox-triage-1500-emails) | 批量邮件分类，吞吐量不代表准确率 | 目录线索 |
 | Messaging | [Jev Chat Assistant](https://github.com/jev-chat/jev-chat-jarvis) | 安卓悬浮窗：Jev 判断 QQ / X / 飞书当前对话的意图、危险等级和下一步动作，并给 3 条起草好的候选回复排序；应用只填入、不代发 | README |
 | Content | [724-ad teardown](https://x.com/TheMattBerman/status/2100654891756589230) | 每条广告多维判断，再汇总对比 | 作者原帖 |
