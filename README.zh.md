@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **67 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **68 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -159,6 +159,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | 本地模型 | [LFM2.5-2.6B-RLCD](https://huggingface.co/monotykamary/LFM2.5-2.6B-RLCD) | 较大的 Liquid 决策模型变体，使用前查看模型许可。 | Model card |
 | 本地模型 | [Verdict / rlcd-modernbert-151m](https://github.com/Heman10x-NGU/Verdict-open-jev) | ModernBERT 决策模型，带评测和浏览器示例。 | README |
 | 本地模型 | [jevos](https://github.com/feder-cr/jev) | 只支持是非判断，兼容 Jev API；一个 1B 模型（MiniCPM）裁剪至 17 层，纯 CPU GGUF，619 MB。 | README |
+| 研究 | [VerdictAD](https://github.com/sgstq0811/VerdictAD-Jev-AD) | 少样本工业异常检测：Clef-Flash 9B 对图像局部窗口做 Noul 判断，用来重新加权现有检测器的异常图。 | 论文 |
 
 ### 工具与资源
 
