@@ -130,6 +130,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Search | [JevPDF](https://github.com/kylemclaren/jevpdf) | 用自己的话问 PDF，每行一个 Noul，高亮匹配的行 | README |
 | Research | [1kpapers](https://www.1kpapers.com/) | 论文浏览：生成模型写摘要，Jev 选主题 | 目录线索 |
 | Research | [JevGPT](https://github.com/sunyasheng/JevGPT) | 论文《[JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272)》的研究 Agent：GPT-5.5 负责规划研究、整合结论；在 BrowseComp-Plus 问答中，Jev 用 Choice 定位答案所在行、用 Noul 判断每个文档区域是否涉及所需信息，并行处理大量文档；代码把原文段落交回 GPT。附 BrowseComp-Plus 与 NeuCLIRBench 复现代码 | 论文 |
+| Research | [VerdictAD](https://github.com/sgstq0811/VerdictAD-Jev-AD) | 少样本工业异常检测：Clef-Flash 9B 对图像局部窗口做 Noul 判断，用来重新加权现有检测器的异常图。 | 论文 |
 | Inbox | [500 / 1,500-email demos](https://madewithjev.com/builds/inbox-triage-1500-emails) | 批量邮件分类，吞吐量不代表准确率 | 目录线索 |
 | Messaging | [Jev Chat Assistant](https://github.com/jev-chat/jev-chat-jarvis) | 安卓悬浮窗：Jev 判断 QQ / X / 飞书当前对话的意图、危险等级和下一步动作，并给 3 条起草好的候选回复排序；应用只填入、不代发 | README |
 | Content | [724-ad teardown](https://x.com/TheMattBerman/status/2100654891756589230) | 每条广告多维判断，再汇总对比 | 作者原帖 |
@@ -159,7 +160,6 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | 本地模型 | [LFM2.5-2.6B-RLCD](https://huggingface.co/monotykamary/LFM2.5-2.6B-RLCD) | 较大的 Liquid 决策模型变体，使用前查看模型许可。 | Model card |
 | 本地模型 | [Verdict / rlcd-modernbert-151m](https://github.com/Heman10x-NGU/Verdict-open-jev) | ModernBERT 决策模型，带评测和浏览器示例。 | README |
 | 本地模型 | [jevos](https://github.com/feder-cr/jev) | 只支持是非判断，兼容 Jev API；一个 1B 模型（MiniCPM）裁剪至 17 层，纯 CPU GGUF，619 MB。 | README |
-| 研究 | [VerdictAD](https://github.com/sgstq0811/VerdictAD-Jev-AD) | 少样本工业异常检测：Clef-Flash 9B 对图像局部窗口做 Noul 判断，用来重新加权现有检测器的异常图。 | 论文 |
 
 ### 工具与资源
 
