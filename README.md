@@ -20,6 +20,7 @@ Browse **68 projects and resources, 5 skills and 108 scenarios**, with 14 record
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
 |---|---|---|
 | See demos, apps and local models | Install and pick a skill | Find a task, edit a template, see the output |
+| [CrakSEO/skills](https://github.com/CrakSEO/skills) | Connect Claude/Cursor/Codex to CrakSEO remote MCP servers for keyword research, SERP, backlinks, rank tracking, site audit, local SEO, AI visibility, Search Console and URL indexing | Claude Code, Cursor, Codex | MIT |
 
 New here? [Give the install prompt to your agent](#install). Already installed? [Ask it to update](#update).
 [Update log](docs/updates/README.md) · [Contributing](CONTRIBUTING.md)
