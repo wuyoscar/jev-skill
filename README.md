@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev chooses, classifies and scores. Your agent supplies evidence and takes action.
-Browse **68 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
+Browse **71 projects and resources, 5 skills and 108 scenarios**, with 14 recorded input/output pairs.
 
 <a id="contents"></a>
 | [Projects](#projects) | [Skills](#skills) | [Examples](#catalog) |
@@ -161,6 +161,7 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Alternative | [LFM2.5-2.6B-RLCD](https://huggingface.co/monotykamary/LFM2.5-2.6B-RLCD) | Larger Liquid-model decision variant; check its model license. | Model card |
 | Alternative | [Verdict / rlcd-modernbert-151m](https://github.com/Heman10x-NGU/Verdict-open-jev) | ModernBERT decision model with evaluation and browser examples. | README |
 | Alternative | [jevos](https://github.com/feder-cr/jev) | Yes/no-only, Jev-compatible API; a 1B model (MiniCPM) cut to 17 layers, CPU-only GGUF, 619 MB. | README |
+| Alternative | [VideoJev](https://github.com/MCG-NJU/VideoJev) | Temporal grounding and video QA through candidate scoring over a shared video prefix; 4B and 35B-A3B weights. | Paper |
 
 ### Tools & resources
 
@@ -188,6 +189,8 @@ Community demos and an illustrated guide. Click a preview for the original; thes
 | Directory | [laya.tools](https://laya.tools) | Projects built on Laya, the open Jev alternative, by platform and use case, plus a Laya vs Jev comparison | Directory |
 | Resource | [Awesome Jev (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery) | Browse open models, projects and independent evaluations. | Directory |
 | Resource | [prompt2jev](https://github.com/sumleo/prompt2jev) | Turn a prompt into typed questions and calling code. | README |
+| Skills | [jev-skill-router](https://github.com/shimo4228/jev-skill-router) | Claude Code hook; Jev suggests a skill per prompt. Author ran shadow mode one week (28/539 suggestions followed), then removed it. | README |
+| Resource | [jev-research-pipeline](https://github.com/shimo4228/jev-research-pipeline) | Daily research note; Jev judges which new papers and repos match your open questions, an LLM writes the note. | README |
 
 [New project checks](skills/jev/references/intake-2026-09-22.md) · [Earlier sources](skills/jev/references/ecosystem.md)
 
