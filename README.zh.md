@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **68 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **71 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -161,6 +161,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | 本地模型 | [LFM2.5-2.6B-RLCD](https://huggingface.co/monotykamary/LFM2.5-2.6B-RLCD) | 较大的 Liquid 决策模型变体，使用前查看模型许可。 | Model card |
 | 本地模型 | [Verdict / rlcd-modernbert-151m](https://github.com/Heman10x-NGU/Verdict-open-jev) | ModernBERT 决策模型，带评测和浏览器示例。 | README |
 | 本地模型 | [jevos](https://github.com/feder-cr/jev) | 只支持是非判断，兼容 Jev API；一个 1B 模型（MiniCPM）裁剪至 17 层，纯 CPU GGUF，619 MB。 | README |
+| 本地模型 | [VideoJev](https://github.com/MCG-NJU/VideoJev) | 在共享视频前缀上对候选项评分，统一时序定位与多选视频问答；提供 4B 和 35B-A3B 权重。 | 论文 |
 
 ### 工具与资源
 
@@ -188,6 +189,8 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | Directory | [laya.tools](https://laya.tools) | 基于开源 Jev 替代模型 Laya 的项目目录，按平台和用途浏览，附 Laya 与 Jev 对比 | 目录线索 |
 | 工具与资源 | [Awesome Jev (OmniJev)](https://github.com/OmniJev/awesome-jev-gallery) | 浏览开放模型、项目和独立评测。 | Directory |
 | 工具与资源 | [prompt2jev](https://github.com/sumleo/prompt2jev) | 把 Prompt 转成结构化问题和调用代码。 | README |
+| Skills | [jev-skill-router](https://github.com/shimo4228/jev-skill-router) | Claude Code 钩子：Jev 按提示词推荐技能并记录。作者影子模式运行一周（539 次推荐中采纳 28 次），之后移除。 | README |
+| 工具与资源 | [jev-research-pipeline](https://github.com/shimo4228/jev-research-pipeline) | 每日研究笔记：Jev 判断哪些新论文和仓库与你的待解问题相关，LLM 生成笔记。 | README |
 
 [本次项目核查](skills/jev/references/intake-2026-09-22.md) · [已有项目来源](skills/jev/references/ecosystem.md)
 
