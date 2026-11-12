@@ -14,7 +14,7 @@
 
 <a id="overview"></a>
 Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
-这里有 **71 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
+这里有 **72 个项目与资料入口、5 个技能、108 个场景**，以及 14 组已记录的输入输出。
 
 <a id="contents"></a>
 | [项目](#projects) | [技能](#skills) | [用法](#catalog) |
@@ -162,6 +162,7 @@ Jev 负责选择、分类和评分，Agent 负责提供证据和执行。
 | 本地模型 | [Verdict / rlcd-modernbert-151m](https://github.com/Heman10x-NGU/Verdict-open-jev) | ModernBERT 决策模型，带评测和浏览器示例。 | README |
 | 本地模型 | [jevos](https://github.com/feder-cr/jev) | 只支持是非判断，兼容 Jev API；一个 1B 模型（MiniCPM）裁剪至 17 层，纯 CPU GGUF，619 MB。 | README |
 | 本地模型 | [VideoJev](https://github.com/MCG-NJU/VideoJev) | 在共享视频前缀上对候选项评分，统一时序定位与多选视频问答；提供 4B 和 35B-A3B 权重。 | 论文 |
+| 本地模型 | [Valen](https://github.com/Valen-Team/Valen) | 开放多模态决策模型，0.8B 至 27B；支持文本、图片、视频问题和 bbox；提供 ONNX 与 GGUF 版本。 | README |
 
 ### 工具与资源
 
